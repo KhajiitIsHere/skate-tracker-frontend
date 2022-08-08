@@ -1,0 +1,26 @@
+.trick-header h3{
+    padding-top: 7px;
+}
+
+.trick-header {
+    display: flex;
+    justify-content: space-between;
+}
+.can-learn-icon{
+    display: flex;
+}
+
+.can-learn-icon h5{
+    padding-top: 15px;
+    padding-left: 5px;
+}
+
+.last-tracked {
+    color: rgba(43, 29, 32, 0.53)
+}
+
+.my-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
