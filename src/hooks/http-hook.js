@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
 
-const URL = "http://localhost:8080/api"
+const URL = "https://skate-helper-backend.herokuapp.com/api"
 
 const mapToMySkateTrick = (item) => {
     const notes = item.notes.map(note => {
