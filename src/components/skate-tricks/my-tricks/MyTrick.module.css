@@ -1,0 +1,13 @@
+.my-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.last-tracked {
+    color: rgba(43, 29, 32, 0.53)
+}
+
+.video {
+    cursor: pointer;
+}

@@ -1,20 +1,28 @@
 import React from "react";
 import Prerequisite from "./Prerequisite";
 import classes from './SkateTrick.module.css'
+import Card from "../../UI/Card";
 
-const SkateTrick = ({shortDescription, imgName, prerequisites, title}) => {
+const SkateTrick = ({shortDescription, imgName, prerequisites, title, trickId, onTrackTrick}) => {
 
     const canLearn = prerequisites.map(pre => pre.isKnown).reduce((prev, curr) => prev && curr, true);
 
     const checkIcon = canLearn ? 'check-icon.png' : 'x-icon.webp'
 
-    const prerequisiteComponents = prerequisites.map(prerequisite => <Prerequisite name={prerequisite.name}
-                                                                                   isKnown={prerequisite.isKnown}/>)
+    const prerequisiteComponents = prerequisites.map(prerequisite =>
+        <Prerequisite
+            key={prerequisite.name}
+            name={prerequisite.name}
+            isKnown={prerequisite.isKnown}/>)
+
+    const startTrackingHandler = () => {
+        onTrackTrick(trickId);
+    }
 
     return (
-        <div className="row">
+        <Card className="row">
             <div className="col">
-                <img src={require(`../../images/${imgName}`)} width="500px"/>
+                <img alt={title} src={require(`../../../images/${imgName}`)} width="500px"/>
             </div>
             <div className={`col ${classes['my-flex']}`}>
                 <div>
@@ -24,7 +32,7 @@ const SkateTrick = ({shortDescription, imgName, prerequisites, title}) => {
                             Prerequisites: {prerequisiteComponents}
                         </div>
                         <div className={classes['can-learn-icon']}>
-                            <img width="50px" height="50px" src={`../../images/${checkIcon}`}/>
+                            <img alt='check-icon' width="50px" height="50px" src={require(`../../../images/${checkIcon}`)}/>
                             <h5>{canLearn ? 'Ready to learn' : 'Not ready to learn'}</h5>
                         </div>
                     </div>
@@ -33,10 +41,10 @@ const SkateTrick = ({shortDescription, imgName, prerequisites, title}) => {
                     {shortDescription}
                 </p>
                 <div className="row">
-                    <button className="col btn-dark"><a href="#">Start Learning</a></button>
+                    <button onClick={startTrackingHandler} disabled={!canLearn} className={`col ${canLearn ? 'btn-dark' : 'btn-light'}`}>Start Tracking</button>
                 </div>
             </div>
-        </div>
+        </Card>
     );
 }
 

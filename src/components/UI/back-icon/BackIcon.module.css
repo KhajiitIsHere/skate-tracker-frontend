@@ -1,0 +1,7 @@
+.back {
+    width: fit-content;
+    border-radius: 50%;
+}
+.back:hover {
+    cursor: pointer;
+}

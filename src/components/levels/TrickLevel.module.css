@@ -1,0 +1,11 @@
+.lvl-passed {
+    color: rgba(28, 122, 29, 0.61);
+}
+
+.lvl-not-reached {
+    color: rgba(119, 118, 122, 0.61);
+}
+.lvl-button{
+    line-height: 100%;
+    margin-left: 20px;
+}

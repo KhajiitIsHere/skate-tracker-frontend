@@ -1,0 +1,12 @@
+.notification{
+    position: absolute;
+    top: 10em;
+    right: 3em;
+    background-color: rgba(114,205,53,0.59);
+    text-align: justify;
+    padding: 1em;
+}
+
+.heading {
+    border-bottom: 1px solid black;
+}
