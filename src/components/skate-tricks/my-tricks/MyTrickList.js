@@ -12,6 +12,10 @@ const MyTrickList = props => {
         navigate(`/my-tricks/${trickId}`);
     }
 
+    if (myTricks === null) {
+        return <h4 className="text-center p-5">Loading...</h4>
+    }
+
     if (myTricks.length !== 0) {
         return (
             <div className="container">

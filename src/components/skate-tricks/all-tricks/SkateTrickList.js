@@ -10,6 +10,9 @@ const SkateTrickList = (props) => {
         trackTrick(+trickId);
     }
 
+    if (allTricks === null) {
+        return <h4 className="text-center p-5">Loading...</h4>
+    }
     if (allTricks.length !== 0) {
         return (
             <div className="container">

@@ -20,8 +20,8 @@ const useTricks = () => {
 
     const {allTricks, myTricks, trackTrick, increaseTrickLevel, addNoteToTrick} = tricksContext;
 
-    const [filteredAllTricks, setFilteredAllTricks] = useState([]);
-    const [filteredMyTricks, setFilteredMyTricks] = useState([])
+    const [filteredAllTricks, setFilteredAllTricks] = useState(null);
+    const [filteredMyTricks, setFilteredMyTricks] = useState(null)
     const [selectedTrickId, setSelectedTrickId] = useState(null);
     const [selectedTrick, setSelectedTrick] = useState(null);
     const [masteredTricks, setMasteredTricks] = useState([]);
@@ -35,6 +35,10 @@ const useTricks = () => {
     }, [])
 
     useEffect(() => {
+        if (allTricks === null) {
+            setFilteredAllTricks(null);
+            return;
+        }
         if (allTricks.length === 0) {
             setFilteredAllTricks([]);
             return;
@@ -81,6 +85,10 @@ const useTricks = () => {
     }, [allTricks, myTricks,])
 
     useEffect(() => {
+        if (myTricks === null) {
+            setFilteredMyTricks(null);
+            return;
+        }
         if (myTricks.length === 0) {
             setFilteredMyTricks([]);
             return;
@@ -111,6 +119,10 @@ const useTricks = () => {
     }, [myTricks, allTricks, masteredTricks])
 
     useEffect(() => {
+        if (allTricks === null) {
+            setSelectedTrick(null);
+            return;
+        }
         if (allTricks.length === 0 || selectedTrickId === null){
             setSelectedTrick(null);
             return;
@@ -129,6 +141,12 @@ const useTricks = () => {
     }, [selectedTrickId, allTricks, myTricks])
 
     useEffect(() => {
+
+        if (allTricks === null || myTricks === null) {
+            setMasteredTricks([]);
+            return;
+        }
+
         const maxLevelForTricks = {};
 
         allTricks.forEach(trick => maxLevelForTricks[trick.id] = {title: trick.title, maxLevel: trick.levels.length, imgName: trick.imgName});

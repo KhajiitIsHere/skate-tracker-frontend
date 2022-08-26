@@ -43,8 +43,8 @@ export const TricksContext = React.createContext()
 
 const TricksContextProvider = (props) => {
 
-    const [tricks, setTricks] = useState([]);
-    const [myTricks, setMyTricks] = useState([]);
+    const [tricks, setTricks] = useState(null);
+    const [myTricks, setMyTricks] = useState(null);
     const {idToken} = useUser();
 
     const {
@@ -52,7 +52,7 @@ const TricksContextProvider = (props) => {
         getMyTricks: fetchMyTricks,
         increaseTrickLevel,
         addNoteToTrick,
-        trackTrick: trackSkateTrick
+        trackTrick: trackSkateTrick,
     } = useHttp();
 
     useEffect(() => {

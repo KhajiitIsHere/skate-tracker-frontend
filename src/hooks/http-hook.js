@@ -43,7 +43,7 @@ const useHttp = () => {
 
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const sendRequest = async (urlPath, method='GET', body=undefined, userId=undefined) => {
+    const sendRequest = async (urlPath, method = 'GET', body = undefined, userId = undefined) => {
 
         setErrorMessage(null);
 
@@ -51,11 +51,12 @@ const useHttp = () => {
         if (userId)
             headers['user-id'] = userId;
 
-        const request = await fetch(URL+urlPath, {
+        const request = await fetch(URL + urlPath, {
             method: method,
             headers: headers,
             body: body ? JSON.stringify(body) : undefined,
         })
+
 
         if (request.ok)
             return await request.json();
@@ -94,7 +95,7 @@ const useHttp = () => {
     const trackTrick = useCallback(async (trickId, idToken) => {
         const data = await sendRequest(`/all-tricks/${trickId}`, 'POST', undefined, idToken);
 
-        if(data) {
+        if (data) {
             return mapToMySkateTrick(data);
         } else {
             return null;
@@ -139,7 +140,18 @@ const useHttp = () => {
         return await sendRequest('/user/change-password', 'POST', {password}, idToken)
     }
 
-    return {errorMessage, getAllTricks, getMyTricks, trackTrick, increaseTrickLevel, addNoteToTrick, register, logout, login, changePassword};
+    return {
+        errorMessage,
+        getAllTricks,
+        getMyTricks,
+        trackTrick,
+        increaseTrickLevel,
+        addNoteToTrick,
+        register,
+        logout,
+        login,
+        changePassword
+    };
 }
 
 export default useHttp;
